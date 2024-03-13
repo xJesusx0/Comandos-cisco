@@ -1,172 +1,193 @@
-Mis disculpas por el error. Aquí está el texto formateado correctamente en formato Markdown:
+## Comandos básicos de Cisco
 
-```markdown
-### Modo exec de usuario
+### Acceso a modos
 
-```
-switch>
-```
-
-Solo comandos básicos para ver configuraciones:
-
-```shell
-$ Para pasar al modo privilegiado se debe escribir
-```
-switch>enable
-```
----
 #### Modo privilegiado
 
-```shell
-switch#
-```
+- Para acceder al modo privilegiado desde el modo EXEC de usuario:
+    ```
+    switch> enable
+    ```
 
-```shell
-$ Para volver al modo usuario
-```
-switch# exit
-```
+- Para volver al modo EXEC de usuario desde el modo privilegiado:
+    ```
+    switch# exit
+    ```
 
-```shell
-$ Para pasar al modo de configuración global
-```
-switch# configure terminal
-```
----
 #### Modo de configuración global
 
-```shell
-switch(config)#
-```
+- Para acceder al modo de configuración global desde el modo privilegiado:
+    ```
+    switch# configure terminal
+    ```
 
-```shell
-$ Para volver al modo privilegiado
-```
-switch(config)# exit
-```
+- Para volver al modo privilegiado desde el modo de configuración global:
+    ```
+    switch(config)# exit
+    ```
 
-Acceso a todas las configuraciones:
+### Visualización de configuraciones
 
-```shell
-$ Para ir al configuración de interfaz
-```
-switch(config)# interface fastethernet0/n
-```
----
-#### Modo de configuración de interfaz
+- Mostrar la configuración en ejecución:
+    ```
+    switch# show running-config
+    ```
 
-```shell
-switch(config-if)#
-```
+- Mostrar la configuración de inicio:
+    ```
+    switch# show startup-config
+    ```
 
-```shell
-$ Apagar un dispositivo
-```
-switch(config-if)# shutdown
-```
-```shell
-$ Encender
-```
-switch(config-if)# no shutdown
-```
+### Configuración de interfaz
 
-```shell
-$ Salir
-```
-switch(config-if)# end
-```
+- Acceder al modo de configuración de interfaz:
+    ```
+    switch(config)# interface interface-type/number
+    ```
 
-```shell
-$ Cambiar nombre
-```
-switch(config)# hostname nombre
-```
-nombre(config)#
-```
+- Apagar una interfaz:
+    ```
+    switch(config-if)# shutdown
+    ```
 
-```shell
-$ Para poner primera contraseña modo usuario
-```
-switch(config)# line console 0
-switch(config-line)# password contraseña
-```
-```shell
-$ Para que la pida al entrar
-```
-switch(config-line)# login
-switch(config-line)# end
-```
+- Encender una interfaz:
+    ```
+    switch(config-if)# no shutdown
+    ```
 
-```shell
-$ Poner contraseña modo privilegiado
-```
-switch# configure terminal
-switch(config)# enable secret contraseña
-switch(config)# end
-```
+- Salir del modo de configuración de interfaz:
+    ```
+    switch(config-if)# end
+    ```
 
-```shell
-$ Configurar contraseña remota
-```
-switch# configure terminal
-switch(config)# line vty 0 15
-switch(config-line)# password contraseña
-switch(config-line)# login
-switch(config-line)# end
-```
+### Cambio de nombre
 
-```shell
-$ Encriptar las contraseñas
-```
-switch# show run
-switch# configure terminal
-switch(config)# service password-encryption 
-switch-(config)# end
-```
+- Cambiar el nombre del dispositivo:
+    ```
+    switch(config)# hostname nombre
+    ```
 
-```shell
-$ Guardar las configuraciones
-```
-switch# copy running-config startup-config
-```
+- Quitar el nombre del dispositivo:
+    ```
+    switch(config)# no hostname
+    ```
 
-```shell
-$ Reiniciar 
-```
-switch# reload
-```
+### Contraseñas
 
-```shell
-$ Poner mensaje
-```
-switch# configure terminal
-switch(config)# banner motd #Acceso autorizado únicamente. Los infractores se procesarán en la medida en que lo permita la ley.#
-```
+#### Contraseña de modo usuario
 
-```shell
-$ FORMATEAR (USAR CON CUIDADO)
-```
-switch# erase startup-config 
-```
+- Configurar la contraseña de modo usuario:
+    ```
+    switch(config)# line console 0
+    switch(config-line)# password contraseña
+    ```
 
-```shell
-$ Poner IP en Switch
-```
-Switch# configure terminal
-Switch(config)# int vlan 1
-Switch(config-if)# ip address 192.168.1.10 255.255.255.0
-Switch(config-if)# no shutdown
-```
+- Activar la solicitud de contraseña al entrar en modo EXEC de usuario:
+    ```
+    switch(config-line)# login
+    ```
 
-```shell
-$ Configurar Router
-```
+- Salir del modo de configuración de línea:
+    ```
+    switch(config-line)# end
+    ```
 
-```shell
-$ Poner IP en Router
-```
-Router# configure terminal
-Router(config)# interface G0/0/1
-Router(config-if)# ip address 192.168.1.10 255.255.255.0
-Router(config-if)# no shutdown
-```
+#### Contraseña de modo privilegiado
+
+- Configurar la contraseña de modo privilegiado:
+    ```
+    switch# configure terminal
+    switch(config)# enable secret contraseña
+    ```
+
+- Salir del modo de configuración global:
+    ```
+    switch(config)# end
+    ```
+
+#### Contraseña remota
+
+- Configurar la contraseña para acceso remoto:
+    ```
+    switch# configure terminal
+    switch(config)# line vty 0 15
+    switch(config-line)# password contraseña
+    ```
+
+- Activar la solicitud de contraseña al acceder de forma remota:
+    ```
+    switch(config-line)# login
+    ```
+
+- Salir del modo de configuración de línea:
+    ```
+    switch(config-line)# end
+    ```
+
+### Encriptación de contraseñas
+
+- Encriptar las contraseñas:
+    ```
+    switch# show run
+    switch# configure terminal
+    switch(config)# service password-encryption
+    ```
+
+- Salir del modo de configuración global:
+    ```
+    switch(config)# end
+    ```
+
+### Guardar configuración y reiniciar
+
+- Guardar la configuración actual en la memoria no volátil:
+    ```
+    switch# copy running-config startup-config
+    ```
+
+- Reiniciar el dispositivo:
+    ```
+    switch# reload
+    ```
+
+### Mensajes de bienvenida
+
+- Configurar un mensaje de bienvenida:
+    ```
+    switch# configure terminal
+    switch(config)# banner motd #Acceso autorizado únicamente. Los infractores se procesarán en la medida en que lo permita la ley.#
+    ```
+
+### Formateo (¡Usar con cuidado!)
+
+- Formatear la configuración de inicio (elimina toda la configuración):
+    ```
+    switch# erase startup-config
+    ```
+
+### Configuración de IP
+
+#### En un switch
+
+- Configurar la dirección IP de una interfaz VLAN:
+    ```
+    Switch#configure terminal
+    Switch(config)#int vlan vlan-number
+    Switch(config-if)#ip address ip-address subnet-mask
+    Switch(config-if)#no shutdown
+    ```
+
+#### En un router
+
+- Configurar la dirección IP de una interfaz:
+    ```
+    Router#configure terminal
+    Router(config)#interface interface-type/number
+    Router(config-if)#ip address ip-address subnet-mask
+    Router(config-if)#no shutdown
+    ```
+
+## Notas
+
+- Este documento solo incluye comandos básicos de Cisco. Para obtener información más detallada sobre un comando específico, consulte la documentación oficial de Cisco.
+- Se recomienda usar el comando `help` para obtener información sobre la sintaxis y las opciones de
