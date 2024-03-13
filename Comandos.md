@@ -1,3 +1,4 @@
+Mis disculpas por el error. Aquí está el texto formateado correctamente en formato Markdown:
 
 ```markdown
 ### Modo exec de usuario
@@ -169,5 +170,3 @@ Router(config)# interface G0/0/1
 Router(config-if)# ip address 192.168.1.10 255.255.255.0
 Router(config-if)# no shutdown
 ```
-
-Esto debería darte un formato Markdown adecuado para tu texto. Por favor, revisa y ajusta según sea necesario.
