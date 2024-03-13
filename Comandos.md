@@ -186,7 +186,7 @@
     Router(config-if)#ip address ip-address subnet-mask
     Router(config-if)#no shutdown
     ```
-### Ruta de salida del router
+#### Ruta de salida del router
     
     Router#configure terminal
     Router(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.2 
