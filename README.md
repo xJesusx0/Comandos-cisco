@@ -183,14 +183,41 @@
     ```
     Router#configure terminal
     Router(config)#interface interface-type/number
-    Router(config-if)#ip address ip-address subnet-mask
+    Router(config-if)#ip address direccion mascara-de-subred
     Router(config-if)#no shutdown
+    ```
+- Ponerle descripcion a una interfaz
+    ```
+    Router(config-if)#description Texto cualquier
+    Router(config-if)#end
     ```
 - Ruta de salida del router
     ```
-     Router#configure terminal
+    Router#configure terminal
     Router(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.2 
     ```
+- Ver estado de las interfaces
+    ```
+    Router#show interface
+    ```
+- Para ver una interfaz en especifico
+    ```
+    Router#show interface serial 0/0/0
+    Router#show interface fastEthernet 0/1
+    ´´´
+- Ver estado de la interfaz y las direcciones IP asignadas a ellas
+    ```
+    Router#show ip interface brief
+    ```
+- Ver tabla de enrutamiento
+    ```
+    Router#show ip route
+    ```
+- Para ver solo las que estan conectadas
+    ```
+    Router#show ip route c
+    ```
+  
 ## Notas
 
 - Este documento solo incluye comandos básicos de Cisco. Para obtener información más detallada sobre un comando específico, consulte la documentación oficial de Cisco.
