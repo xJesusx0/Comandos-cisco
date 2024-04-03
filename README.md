@@ -230,7 +230,18 @@
     ```
     Router#show ip route c
     ```
-  
+## Configurar router DHCP
+- Excluir una direccion ip
+  ```
+  #Se excluiran las direcciones ip desde la 192.168.1.1 hasta 192.168.1.10
+  Router(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
+
+  #Se excluiran las direcciones ip desde 172.16.0.1 hasta 172.16.0.10
+  Router(config)# ip dhcp excluded-address 172.16.0.1 172.16.0.10
+
+  Router(config)# ip dhcp excluded-address limite-inferior limite-superior
+  ```
+
 ## Notas
 
 - Este documento solo incluye comandos básicos de Cisco. Para obtener información más detallada sobre un comando específico, consulte la documentación oficial de Cisco.
