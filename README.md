@@ -232,16 +232,34 @@
     ```
 ## Configurar router DHCP
 - Excluir una direccion ip
+  - Ejemplo 1 
   ```
   #Se excluiran las direcciones ip desde la 192.168.1.1 hasta 192.168.1.10
   Router(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
-
+  ```
+  - Ejemplo 2
+  ```
   #Se excluiran las direcciones ip desde 172.16.0.1 hasta 172.16.0.10
   Router(config)# ip dhcp excluded-address 172.16.0.1 172.16.0.10
-
+  ```
+  ```
   Router(config)# ip dhcp excluded-address limite-inferior limite-superior
   ```
-
+- Configurar un pool de direcciones
+  ```
+  R1(config)# ip dhcp pool RED1
+  R1(config)# network 192.168.1.0 255.255.255.0
+  R1(config)# default-router 192.168.1.1
+  R1(config)# dns-server 8.8.8.8
+  ```
+  - Ejemplo 
+  ```
+  R1(config)# ip dhcp pool Nombre-red
+  R1(config)# network ip-red mascara-red
+  R1(config)# default-router puerta-predeterminada
+  R1(config)# dns-server 8.8.8.8  
+  
+  ```
 ## Notas
 
 - Este documento solo incluye comandos básicos de Cisco. Para obtener información más detallada sobre un comando específico, consulte la documentación oficial de Cisco.
