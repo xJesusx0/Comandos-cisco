@@ -197,18 +197,18 @@
     Router(config)#ip route 0.0.0.0 0.0.0.0 ip-router 
     ```
     Ambos routers deben configurarse
-  - Ejemplo
+    - Ejemplo
       Router 1 - ip = 1.1.1.1
       Router 2 - ip = 2.2.2.2
   
-- Agregamos la ip del router 2 al router 1
-    ```
-    Router1(config)#ip route 0.0.0.0 0.0.0.0 2.2.2.2 
-    ```
-- Agregamos la ip del router 1 al router 2
-    ```
-    Router2(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.1 
-    ```
+    - Agregamos la ip del router 2 al router 1
+        ```
+        Router1(config)#ip route 0.0.0.0 0.0.0.0 2.2.2.2 
+        ```
+    - Agregamos la ip del router 1 al router 2
+        ```
+        Router2(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.1 
+        ```
 - Ver estado de las interfaces
     ```
     Router#show interface
