@@ -39,11 +39,11 @@
     ```
 
 - Mostrar la configuración de inicio:
-
     ```
     switch# show startup-config
     ```
-    - Muestra el estado y la configuración de la interfaz.
+- Muestra el estado y la configuración de la interfaz.
+
   ```
     S1# show interfaces [interface-id]
   ```
@@ -357,3 +357,37 @@
   R1(config)# default-router direccion-router
   R1(config)# dns-server 8.8.8.8
   ```
+
+## Acceso SSH
+    - Verificar compatibilidad con ssh
+    ```
+        S1#  show ip ssh
+    ```
+
+    - Asignar nombre de dominio
+    ```
+        S1(config)# ip domain-name cisco.com
+    ```
+
+    - Generar claves RSA
+    ```
+        S1(config)# crypto key generate rsa
+    ```
+
+    - Configurar autenticacion de usuarios
+    ```
+        S1(config)# username admin secret ccna
+    ```
+
+    - Configurar las lineas vty
+    ```
+        S1(config)# line vty 0 15
+        S1(config-line)# transport input ssh
+        S1(config-line)# login local
+        S1(config-line)# salida
+    ```
+
+    - Habilitar SSH version 2
+    ```
+        S1(config)# ip ssh version 2
+    ```
