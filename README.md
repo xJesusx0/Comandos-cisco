@@ -1,8 +1,8 @@
-### Comandos básicos de Cisco
+# Comandos básicos de Cisco
 
-#### Acceso a modos
+## Acceso a modos
 
-##### Modo privilegiado
+### Modo privilegiado
 
 - Para acceder al modo privilegiado desde el modo EXEC de usuario:
 
@@ -16,7 +16,7 @@
     switch# exit
     ```
 
-##### Modo de configuración global
+### Modo de configuración global
 
 - Para acceder al modo de configuración global desde el modo privilegiado:
 
@@ -30,7 +30,7 @@
     switch(config)# exit
     ```
 
-### Visualización de configuraciones
+## Visualización de configuraciones
 
 - Mostrar la configuración en ejecución:
 
@@ -39,55 +39,42 @@
     ```
 
 - Mostrar la configuración de inicio:
+
     ```
     switch# show startup-config
     ```
-- Muestra el estado y la configuración de la interfaz.
 
-  ```
-    S1# show interfaces [interface-id]
-  ```
-  
-- Muestra la configuración de inicio actual.	
-  ```
-     S1# show startup-config
-  ```
-  
-- Muestra la configuración actual en ejecución.
-  ```
-    S1# show running-config
-  ```
-  
-- Muestra información sobre el sistema de archivos flash.
-  ```
-    S1# show flash
-  ```
-  
-- Muestra el estado del hardware y el software del sistema.	
-  ```
-    S1# show version
-  ```
-  
-- Muestra la configuración actual en ejecución.
-  ```
-    S1# show history
-  ```
-  
-- Muestra información de IP de una interfaz.
-  ``` 
-    S1# show ip interface [interface-id]
-    O
-    S1# show ipv6 interface [interface-id]
-  ```
-  
-- Muestra la tabla de direcciones MAC.
-  ```
-    S1# show mac-address-table
-    O
-    S1# show mac address-table
-  ```
+- Muestra el estado y la configuración de la interfaz:
 
-### Configuración de interfaz
+    ```
+    switch# show interfaces [interface-id]
+    ```
+
+- Muestra información sobre el sistema de archivos flash:
+
+    ```
+    switch# show flash
+    ```
+
+- Muestra el estado del hardware y el software del sistema:
+
+    ```
+    switch# show version
+    ```
+
+- Muestra información de IP de una interfaz:
+
+    ```
+    switch# show ip interface [interface-id]
+    ```
+
+- Muestra la tabla de direcciones MAC:
+
+    ```
+    switch# show mac-address-table
+    ```
+
+## Configuración de interfaz
 
 - Acceder al modo de configuración de interfaz:
 
@@ -107,13 +94,7 @@
     switch(config-if)# no shutdown
     ```
 
-- Salir del modo de configuración de interfaz:
-
-    ```
-    switch(config-if)# end
-    ```
-
-### Cambio de nombre
+## Cambio de nombre
 
 - Cambiar el nombre del dispositivo:
 
@@ -127,9 +108,9 @@
     switch(config)# no hostname
     ```
 
-### Contraseñas
+## Contraseñas
 
-#### Contraseña de modo usuario
+### Contraseña de modo usuario
 
 - Configurar la contraseña de modo usuario:
 
@@ -144,33 +125,19 @@
     switch(config-line)# login
     ```
 
-- Salir del modo de configuración de línea:
-
-    ```
-    switch(config-line)# end
-    ```
-
-#### Contraseña de modo privilegiado
+### Contraseña de modo privilegiado
 
 - Configurar la contraseña de modo privilegiado:
 
     ```
-    switch# configure terminal
     switch(config)# enable secret contraseña
     ```
 
-- Salir del modo de configuración global:
-
-    ```
-    switch(config)# end
-    ```
-
-#### Contraseña remota
+### Contraseña remota
 
 - Configurar la contraseña para acceso remoto:
 
     ```
-    switch# configure terminal
     switch(config)# line vty 0 15
     switch(config-line)# password contraseña
     ```
@@ -181,29 +148,15 @@
     switch(config-line)# login
     ```
 
-- Salir del modo de configuración de línea:
-
-    ```
-    switch(config-line)# end
-    ```
-
-### Encriptación de contraseñas
+## Encriptación de contraseñas
 
 - Encriptar las contraseñas:
 
     ```
-    switch# show run
-    switch# configure terminal
     switch(config)# service password-encryption
     ```
 
-- Salir del modo de configuración global:
-
-    ```
-    switch(config)# end
-    ```
-
-### Guardar configuración y reiniciar
+## Guardar configuración y reiniciar
 
 - Guardar la configuración actual en la memoria no volátil:
 
@@ -217,16 +170,15 @@
     switch# reload
     ```
 
-### Mensajes de bienvenida
+## Mensajes de bienvenida
 
 - Configurar un mensaje de bienvenida:
 
     ```
-    switch# configure terminal
     switch(config)# banner motd #Acceso autorizado únicamente. Los infractores se procesarán en la medida en que lo permita la ley.#
     ```
 
-### Formateo (¡Usar con cuidado!)
+## Formateo (¡Usar con cuidado!)
 
 - Formatear la configuración de inicio (elimina toda la configuración):
 
@@ -234,25 +186,23 @@
     switch# erase startup-config
     ```
 
-### Configuración de IP
+## Configuración de IP
 
-#### En un switch
+### En un switch
 
 - Configurar la dirección IP de una interfaz VLAN:
 
     ```
-    Switch#configure terminal
     Switch(config)#int vlan vlan-number
     Switch(config-if)#ip address ip-address subnet-mask
     Switch(config-if)#no shutdown
     ```
 
-#### En un router
+### En un router
 
 - Configurar la dirección IP de una interfaz:
 
     ```
-    Router#configure terminal
     Router(config)#interface interface-type/number
     Router(config-if)#ip address direccion mascara-de-subred
     Router(config-if)#no shutdown
@@ -262,45 +212,18 @@
 
     ```
     Router(config-if)#description Texto cualquier
-    Router(config-if)#end
     ```
 
 - Ruta de salida del router:
 
     ```
-    Router#configure terminal
     Router(config)#ip route 0.0.0.0 0.0.0.0 ip-router 
     ```
-
-    Ambos routers deben configurarse.
-
-    - Ejemplo:
-      - Router 1 - ip = 1.1.1.1
-      - Router 2 - ip = 2.2.2.2
-  
-    - Agregamos la ip del router 2 al router 1:
-
-        ```
-        Router1(config)#ip route 0.0.0.0 0.0.0.0 2.2.2.2 
-        ```
-
-    - Agregamos la ip del router 1 al router 2:
-
-        ```
-        Router2(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.1 
-        ```
 
 - Ver estado de las interfaces:
 
     ```
     Router#show interface
-    ```
-
-- Para ver una interfaz en específico:
-
-    ```
-    Router#show interface serial 0/0/0
-    Router#show interface fastEthernet 0/1
     ```
 
 - Ver estado de la interfaz y las direcciones IP asignadas a ellas:
@@ -315,80 +238,59 @@
     Router#show ip route
     ```
 
-- Para ver solo las que están conectadas:
-
-    ```
-    Router#show ip route c
-    ```
-
 ### Configurar router DHCP
 
-- Excluir una dirección IP
-  - Ejemplo 1:
+- Excluir una dirección IP:
 
     ```
-    Router(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
+    Router(config)# ip dhcp excluded-address limite-inferior limite-superior
     ```
-
-  - Ejemplo 2:
-
-    ```
-    Router(config)# ip dhcp excluded-address 172.16.0.1 172.16.0.10
-    ```
-
-  ```
-  Router(config)# ip dhcp excluded-address limite-inferior limite-superior
-  ```
 
 - Configurar un pool de direcciones:
 
-  ```
-  R1(config)# ip dhcp pool RED1
-  R1(config)# network 192.168.1.0 255.255.255.0
-  R1(config)# default-router 192.168.1.1
-  R1(config)# dns-server 8.8.8.8
-  ```
-
-  - Ejemplo:
-
-  ```
-  R1(config)# ip dhcp pool Nombre-red
-  R1(config)# network ip-red mascara-red
-  R1(config)# default-router direccion-router
-  R1(config)# dns-server 8.8.8.8
-  ```
+    ```
+    Router(config)# ip dhcp pool Nombre-red
+    Router(dhcp-config)# network ip-red mascara-red
+    Router(dhcp-config)# default-router direccion-router
+    Router(dhcp-config)# dns-server 8.8.8.8
+    ```
 
 ## Acceso SSH
-```
-    - Verificar compatibilidad con ssh
+
+- Verificar compatibilidad con SSH:
+
     ```
-        S1#  show ip ssh
+    S1# show ip ssh
     ```
 
-    - Asignar nombre de dominio
+- Asignar nombre de dominio:
+
     ```
-        S1(config)# ip domain-name cisco.com
+    S1(config)# ip domain-name cisco.com
     ```
 
-    - Generar claves RSA
+- Generar claves RSA:
+
     ```
-        S1(config)# crypto key generate rsa
+    S1(config)# crypto key generate rsa
     ```
 
-    - Configurar autenticacion de usuarios
+- Configurar autenticación de usuarios:
+
     ```
-        S1(config)# username admin secret ccna
+    S1(config)# username admin secret ccna
     ```
 
-    - Configurar las lineas vty
+- Configurar las líneas vty:
+
     ```
-        S1(config)# line vty 0 15
-        S1(config-line)# transport input ssh
-        S1(config-line)# login local
-        S1(config-line)# salida
+    S1(config)# line vty 0 15
+    S1(config-line)# transport input ssh
+    S1(config-line)# login local
     ```
 
-    - Habilitar SSH version 2
+- Habilitar SSH versión 2:
+
     ```
-        S1(config)# ip ssh version 2
+    S1(config)# ip ssh version 2
     ```
