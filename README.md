@@ -359,6 +359,7 @@
   ```
 
 ## Acceso SSH
+```
     - Verificar compatibilidad con ssh
     ```
         S1#  show ip ssh
