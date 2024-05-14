@@ -278,48 +278,48 @@
     Router#show ip route c
     ```
 - Muestra el estado y la configuración de la interfaz.
-  ´´´
+  ```
     S1# show interfaces [interface-id]
-  ´´´
+  ```
   
 - Muestra la configuración de inicio actual.	
-  ´´´
+  ```
      S1# show startup-config
-  ´´´
+  ```
   
 - Muestra la configuración actual en ejecución.
-  ´´´
+  ```
     S1# show running-config
-  ´´´
+  ```
   
 - Muestra información sobre el sistema de archivos flash.
-  ´´´
+  ```
     S1# show flash
-  ´´´
+  ```
   
 - Muestra el estado del hardware y el software del sistema.	
-  ´´´
+  ```
     S1# show version
-  ´´´
+  ```
   
 - Muestra la configuración actual en ejecución.
-  ´´´
+  ```
     S1# show history
-  ´´´
+  ```
   
 - Muestra información de IP de una interfaz.
-  ´´´ 
+  ``` 
     S1# show ip interface [interface-id]
     O
     S1# show ipv6 interface [interface-id]
-  ´´´
+  ```
   
 - Muestra la tabla de direcciones MAC.
-  ´´´
+  ```
     S1# show mac-address-table
     O
     S1# show mac address-table
-  ´´´
+  ```
 ### Configurar router DHCP
 
 - Excluir una dirección IP
