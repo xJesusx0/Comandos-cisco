@@ -93,7 +93,11 @@
     ```
     switch(config-if)# no shutdown
     ```
+- Poner default gateway:
 
+    ```
+    S1(config)# ip default-gateway 192.168.1.1
+    ```
 ## Cambio de nombre
 
 - Cambiar el nombre del dispositivo:
