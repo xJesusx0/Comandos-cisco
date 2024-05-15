@@ -145,7 +145,12 @@
     switch(config)# line vty 0 15
     switch(config-line)# password contraseña
     ```
-
+- Configurar contraseña para acceso remoto con telnet:
+  
+  ```
+  S1(config)# line con 0
+  S1(config-line)# logging synchronous
+  ```
 - Activar la solicitud de contraseña al acceder de forma remota:
 
     ```
