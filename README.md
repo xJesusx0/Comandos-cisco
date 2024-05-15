@@ -275,7 +275,7 @@
 - Asignar nombre de dominio:
 
     ```
-    S1(config)# ip domain-name cisco.com
+    S1(config)# ip domain-name nombre-dominio
     ```
 
 - Generar claves RSA:
@@ -287,7 +287,7 @@
 - Configurar autenticación de usuarios:
 
     ```
-    S1(config)# username admin secret ccna
+    S1(config)# username usuario secret contraseña
     ```
 
 - Configurar las líneas vty:
@@ -297,7 +297,10 @@
     S1(config-line)# transport input ssh
     S1(config-line)# login local
     ```
-
+- Eliminar una contraseña
+  ```
+  S1(config-line)#no password contraseña
+  ```
 - Habilitar SSH versión 2:
 
     ```
