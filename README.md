@@ -294,3 +294,11 @@
     ```
     S1(config)# ip ssh version 2
     ```
+## Otros
+
+-  Asignar todos los puertos de usuario a VLAN 99.
+    ```
+    S1(config)#interface range gig1/0/1-24
+    S1(config-if-range)#swi
+    S1(config-if-range)#switchport access vlan 99
+    ```
