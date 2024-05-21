@@ -313,9 +313,14 @@
     ```
 ## Otros
 
+-  Asignar un puerto especifico a VLAN 99.
+    ```
+    S1(config)#interface gig1/0/1
+    S1(config-if)#switchport access vlan 99
+    ```
+    
 -  Asignar todos los puertos de usuario a VLAN 99.
     ```
     S1(config)#interface range gig1/0/1-24
-    S1(config-if-range)#swi
     S1(config-if-range)#switchport access vlan 99
     ```
