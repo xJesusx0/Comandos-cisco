@@ -194,7 +194,11 @@
     ```
     switch# erase startup-config
     ```
+- Eliminar el archivo que contiene las vlan:
 
+    ```
+    switch# delete vlan.dat
+    ```
 ## Configuración de IP
 
 ### En un switch
@@ -311,16 +315,72 @@
     ```
     S1(config)# ip ssh version 2
     ```
-## Otros
+## Vlan
+- Crear una vlan
+  ```
+  S1# configure terminal
+  S1(config)# vlan 99
+  S1(config-vlan)# name nombre-vlan
+  S1(config-vlan)# end
+  ```
+  
+- Asignar un puerto especifico a VLAN 99.
+  ```
+  S1# configure terminal
+  S1(config)# interface fa0/6
+  S1(config-if)# switchport mode access
+  S1(config-if)# switchport access vlan 99
+  S1(config-if)# end
+  ```
+  
+- Ver en que vlan esta configurado un puerto
+  ```
+  S1# show interfaces fa0/18 switchport
+  ```
 
--  Asignar un puerto especifico a VLAN 99.
-    ```
-    S1(config)#interface gig1/0/1
-    S1(config-if)#switchport access vlan 99
-    ```
-    
--  Asignar todos los puertos de usuario a VLAN 99.
-    ```
-    S1(config)#interface range gig1/0/1-24
-    S1(config-if-range)#switchport access vlan 99
-    ```
+- Quitar un puerto de una vlan
+  ```
+  S1(config)# interface fa0/18
+  S1(config-if)# no switchport access vlan
+  S1(config-if)# end
+  ```
+Aunque la vlan ya no tenga puertos asignados, esta seguira activa
+
+- Eliminar una vlan
+  ```
+  S1# no vlan vlan-id
+  ```
+
+- Asignar todos los puertos de usuario a VLAN 99.
+  ```
+  S1(config)#interface range gig1/0/1-24
+  S1(config-if-range)#switchport vlan 99
+  ```
+  
+- Ver todas las vlan configuradas
+  ```
+  S1# show vlan summary
+  ```
+
+- Configurar una vlan de voz y datos
+  * Creacion de la vlan
+  ```
+  S3(config)# vlan 20
+  S3(config-vlan)# name student
+  S3(config-vlan)# vlan 150
+  S3(config-vlan)# name VOICE
+  S3(config-vlan)# exit
+  ```
+  
+  * Asignar el puerto 18 a la vlan 
+  ```
+  S3(config)# interface fa0/18
+  S3(config-if)# switchport mode access
+
+  # Recibe datos de la vlan 20 y voz de la 150
+  
+  S3(config-if)# switchport access vlan 20
+  S3(config-if)# mls qos trust cos
+  S3(config-if)# switchport voice vlan 150
+  S3(config-if)# end
+  ```
