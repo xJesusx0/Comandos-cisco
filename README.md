@@ -206,6 +206,11 @@
     Switch(config-if)#ip address ip-address subnet-mask
     Switch(config-if)#no shutdown
     ```
+- Ver estado de las vlan:
+
+    ```
+    Router#show vlan brief
+    ```
 
 ### En un router
 
