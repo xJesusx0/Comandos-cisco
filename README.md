@@ -338,13 +338,13 @@
   S1# show interfaces fa0/18 switchport
   ```
 
-- Quitar un puerto de una vlan
+- Quitar un puerto de una vlan, este sera asociado a la vlan por defecto
   ```
   S1(config)# interface fa0/18
   S1(config-if)# no switchport access vlan
   S1(config-if)# end
   ```
-Aunque la vlan ya no tenga puertos asignados, esta seguira activa
+  Nota: Aunque la vlan ya no tenga puertos asignados, esta seguira activa
 
 - Eliminar una vlan
   ```
