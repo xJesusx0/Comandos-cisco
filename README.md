@@ -384,3 +384,9 @@
   S3(config-if)# switchport voice vlan 150
   S3(config-if)# end
   ```
+- Configurar un enlace troncal
+  ```
+  S1(config)#int g0/1
+  S1(config-if)#switchport mode trunk
+  S1(config-if)#switchport trunk native vlan 99
+  ```
