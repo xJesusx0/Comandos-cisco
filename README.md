@@ -359,7 +359,7 @@
   
 - Ver todas las vlan configuradas
   ```
-  S1# show vlan summary
+  S1# show vlan
   ```
 
 - Configurar una vlan de voz y datos
