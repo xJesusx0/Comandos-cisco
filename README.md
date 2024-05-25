@@ -394,4 +394,8 @@
   ```
   S1(config)# interface g0/1
   S1(config-if)# switchport mode dynamic desirable
-  ``` 
+  ```
+- Desactivar negociacion DTP
+  ```
+  S1(config-if)# switchport nonegotiate
+  ```
