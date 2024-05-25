@@ -351,10 +351,10 @@
   S1# no vlan vlan-id
   ```
 
-- Asignar todos los puertos de usuario a VLAN 99.
+- Asignar varios puertos a VLAN 99.
   ```
   S1(config)#interface range gig1/0/1-24
-  S1(config-if-range)#switchport vlan 99
+  S1(config-if-range)#switchport access vlan 99
   ```
   
 - Ver todas las vlan configuradas
