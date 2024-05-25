@@ -390,3 +390,8 @@
   S1(config-if)#switchport mode trunk
   S1(config-if)#switchport trunk native vlan 99
   ```
+- Configurar un enlace troncal dinamico
+  ```
+  S1(config)# interface g0/1
+  S1(config-if)# switchport mode dynamic desirable
+  ``` 
