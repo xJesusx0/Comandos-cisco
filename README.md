@@ -30,7 +30,10 @@
     ```
     D1# ip routing
     ```
-
+## Deshabilitar busqueda dns
+    ```
+    R1(config)# no ip domain-lookup
+    ```
 ## Visualización de configuraciones
 
 - Mostrar la configuración en ejecución:
