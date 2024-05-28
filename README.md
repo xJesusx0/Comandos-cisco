@@ -29,7 +29,12 @@
     ```
     switch(config)# exit
     ```
+## Hablilitar el routing en un switch de capa 3
 
+    ```
+    D1# ip routing
+    ```
+    
 ## Visualización de configuraciones
 
 - Mostrar la configuración en ejecución:
@@ -73,7 +78,29 @@
     ```
     switch# show mac-address-table
     ```
-
+    
+- Comprobar que las subinterfaces salen en la tabla de enrutamiento
+  
+  	```
+  	R1# show ip route
+  	```
+  
+- Ver las ip de las subinterfaces
+  
+  	```
+  	R1# show ip interface brief
+  	```
+  
+- Verificar las subinterfaces
+  
+  	```
+  	R1# show interfaces g0/0/1.10
+  	```
+- Ver los enlaces troncales
+  
+  	```
+  	S1# show interfaces trunk
+  	```
 ## Configuración de interfaz
 
 - Acceder al modo de configuración de interfaz:
