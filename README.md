@@ -399,3 +399,15 @@
   ```
   S1(config-if)# switchport nonegotiate
   ```
+- Configurar una subinterfaz
+  ```
+  R1(config)# interface G0/0/1.10
+  R1(config-subif)# description Default Gateway for VLAN 10
+  #Se le asigna el trafico de la vlan 10
+  R1(config-subif)# encapsulation dot1Q 10
+  R1(config-subif)# ip add 192.168.10.1 255.255.255.0
+  R1(config-subif)# exit
+  R1(config)# interface G0/0/1
+  R1(config-if)# no shut
+  R1(config-if)# end
+  ```
