@@ -1,120 +1,452 @@
-### Acceso a modos
+# Comandos básicos de Cisco
 
-- **Modo privilegiado**:
-    - Acceder: `switch> enable`
-    - Volver: `switch# exit`
+## Acceso a modos
 
-- **Modo de configuración global**:
-    - Acceder: `switch# configure terminal`
-    - Volver: `switch(config)# exit`
+### Modo privilegiado
 
-### Visualización de configuraciones
+- Para acceder al modo privilegiado desde el modo EXEC de usuario:
+    ```
+    switch> enable
+    ```
 
-- **Mostrar configuración**:
-    - En ejecución: `switch# show running-config`
-    - De inicio: `switch# show startup-config`
-    - Interfaces: `switch# show interfaces [interface-id]`
-    - Flash: `switch# show flash`
-    - Sistema: `switch# show version`
-    - Direcciones IP: `switch# show ip interface [interface-id]`
-    - Tabla de direcciones MAC: `switch# show mac-address-table`
-    - Tabla de enrutamiento: `R1# show ip route`
-    - IP de subinterfaces: `R1# show ip interface brief`
-    - Detalles de subinterfaces: `R1# show interfaces g0/0/1.10`
-    - Enlaces troncales: `S1# show interfaces trunk`
+- Para volver al modo EXEC de usuario desde el modo privilegiado:
+    ```
+    switch# exit
+    ```
 
-### Configuración de interfaz
+### Modo de configuración global
 
-- **Acceder al modo de configuración de interfaz**:
-    - `switch(config)# interface interface-type/number`
+- Para acceder al modo de configuración global desde el modo privilegiado:
+    ```
+    switch# configure terminal
+    ```
 
-- **Gestión de interfaz**:
-    - Apagar: `switch(config-if)# shutdown`
-    - Encender: `switch(config-if)# no shutdown`
-    - Configurar default gateway: `S1(config)# ip default-gateway 192.168.1.1`
+- Para volver al modo privilegiado desde el modo de configuración global:
+    ```
+    switch(config)# exit
+    ```
 
-### Cambio de nombre
+## Habilitar el routing en un switch de capa 3
+    
+    D1# ip routing
+    
+## Deshabilitar busqueda dns
+    ```
+    R1(config)# no ip domain-lookup
+    ```
+## Visualización de configuraciones
 
-- **Cambiar nombre del dispositivo**:
-    - `switch(config)# hostname nombre`
-- **Quitar nombre del dispositivo**:
-    - `switch(config)# no hostname`
+- Mostrar la configuración en ejecución:
+    ```
+    switch# show running-config
+    ```
 
-### Contraseñas
+- Mostrar la configuración de inicio:
+    ```
+    switch# show startup-config
+    ```
 
-- **Contraseña de modo usuario**:
-    - Configurar: `switch(config)# line console 0`, `switch(config-line)# password contraseña`
-    - Solicitar contraseña: `switch(config-line)# login`
-- **Contraseña de modo privilegiado**:
-    - Configurar: `switch(config)# enable secret contraseña`
-- **Contraseña remota**:
-    - Configurar: `switch(config)# line vty 0 15`, `switch(config-line)# password contraseña`
-    - Activar solicitud: `switch(config-line)# login`
+- Mostrar el estado y la configuración de la interfaz:
+    ```
+    switch# show interfaces [interface-id]
+    ```
 
-### Encriptación de contraseñas
+- Mostrar información sobre el sistema de archivos flash:
+    ```
+    switch# show flash
+    ```
 
-- **Encriptar contraseñas**:
-    - `switch(config)# service password-encryption`
+- Mostrar el estado del hardware y el software del sistema:
+    ```
+    switch# show version
+    ```
 
-### Guardar configuración y reiniciar
+- Mostrar información de IP de una interfaz:
+    ```
+    switch# show ip interface [interface-id]
+    ```
 
-- **Guardar configuración**:
-    - `switch# copy running-config startup-config`
-- **Reiniciar dispositivo**:
-    - `switch# reload`
+- Mostrar la tabla de direcciones MAC:
+    ```
+    switch# show mac-address-table
+    ```
 
-### Mensajes de bienvenida
+- Comprobar que las subinterfaces salen en la tabla de enrutamiento:
+    ```
+    R1# show ip route
+    ```
 
-- **Configurar mensaje de bienvenida**:
-    - `switch(config)# banner motd #Mensaje aquí#`
+- Ver las IP de las subinterfaces:
+    ```
+    R1# show ip interface brief
+    ```
 
-### Formateo (¡Usar con cuidado!)
+- Verificar las subinterfaces:
+    ```
+    R1# show interfaces g0/0/1.10
+    ```
 
-- **Formatear configuración de inicio**:
-    - `switch# erase startup-config`
-- **Eliminar archivo de VLAN**:
-    - `switch# delete vlan.dat`
+- Ver los enlaces troncales:
+    ```
+    S1# show interfaces trunk
+    ```
 
-### Configuración de IP
+## Configuración de interfaz
 
-- **En un switch**:
-    - Configurar dirección IP de una interfaz VLAN: `Switch(config)#int vlan vlan-number`, `Switch(config-if)#ip address ip-address subnet-mask`, `Switch(config-if)#no shutdown`
-    - Ver estado de las VLAN: `Router#show vlan brief`
-- **En un router**:
-    - Configurar dirección IP de una interfaz: `Router(config)#interface interface-type/number`, `Router(config-if)#ip address direccion mascara-de-subred`, `Router(config-if)#no shutdown`
-    - Descripción de interfaz: `Router(config-if)#description Texto cualquier`
-    - Ruta de salida: `Router(config)#ip route 0.0.0.0 0.0.0.0 ip-router`
-    - Ver estado de interfaces: `Router#show interface`
-    - Ver estado de IP: `Router#show ip interface brief`
-    - Ver tabla de enrutamiento: `Router#show ip route`
+- Acceder al modo de configuración de interfaz:
+    ```
+    switch(config)# interface interface-type/number
+    ```
 
-### Configuración de router DHCP
+- Apagar una interfaz:
+    ```
+    switch(config-if)# shutdown
+    ```
 
-- **Excluir dirección IP**: `Router(config)# ip dhcp excluded-address limite-inferior limite-superior`
-- **Configurar pool de direcciones**: `Router(config)# ip dhcp pool Nombre-red`, `Router(dhcp-config)# network ip-red mascara-red`, `Router(dhcp-config)# default-router direccion-router`, `Router(dhcp-config)# dns-server 8.8.8.8`
+- Encender una interfaz:
+    ```
+    switch(config-if)# no shutdown
+    ```
 
-### Acceso SSH
+- Poner default gateway:
+    ```
+    S1(config)# ip default-gateway 192.168.1.1
+    ```
 
-- **Verificar SSH**: `S1# show ip ssh`
-- **Asignar nombre de dominio**: `S1(config)# ip domain-name nombre-dominio`
-- **Generar claves RSA**: `S1(config)# crypto key generate rsa`
-- **Configurar autenticación de usuarios**: `S1(config)# username usuario secret contraseña`
-- **Configurar líneas vty**: `S1(config)# line vty 0 15`, `S1(config-line)# transport input ssh`, `S1(config-line)# login local`
-- **Eliminar contraseña**: `S1(config-line)#no password contraseña`
-- **Habilitar SSH versión 2**: `S1(config)# ip ssh version 2`
+## Cambio de nombre
 
-### VLAN
+- Cambiar el nombre del dispositivo:
+    ```
+    switch(config)# hostname nombre
+    ```
 
-- **Crear VLAN**: `S1(config)# vlan 99`, `S1(config-vlan)# name nombre-vlan`
-- **Asignar puerto a VLAN**: `S1(config)# interface fa0/6`, `S1(config-if)# switchport mode access`, `S1(config-if)# switchport access vlan 99`
-- **Quitar puerto de VLAN**: `S1(config)# interface fa0/18`, `S1(config-if)# no switchport access vlan`
-- **Eliminar VLAN**: `S1# no vlan vlan-id`
-- **Asignar varios puertos a VLAN**: `S1(config)#interface range gig1/0/1-24`, `S1(config-if-range)#switchport access vlan 99`
-- **Ver todas las VLAN**: `S1# show vlan`
-- **Configurar VLAN de voz y datos**: ver subsección correspondiente
-- **Configurar enlace troncal**: ver subsección correspondiente
+- Quitar el nombre del dispositivo:
+    ```
+    switch(config)# no hostname
+    ```
 
-### Configuración de EtherChannel
+## Contraseñas
 
-- **Configurar EtherChannel**: ver subsección correspondiente
-- **Ver información sobre EtherChannel**: ver subsección correspondiente
+### Contraseña de modo usuario
+
+- Configurar la contraseña de modo usuario:
+    ```
+    switch(config)# line console 0
+    switch(config-line)# password contraseña
+    ```
+
+- Activar la solicitud de contraseña al entrar en modo EXEC de usuario:
+    ```
+    switch(config-line)# login
+    ```
+
+### Contraseña de modo privilegiado
+
+- Configurar la contraseña de modo privilegiado:
+    ```
+    switch(config)# enable secret contraseña
+    ```
+
+### Contraseña remota
+
+- Configurar la contraseña para acceso remoto:
+    ```
+    switch(config)# line vty 0 15
+    switch(config-line)# password contraseña
+    ```
+
+- Configurar contraseña para acceso remoto con Telnet:
+    ```
+    S1(config)# line con 0
+    S1(config-line)# logging synchronous
+    ```
+
+- Activar la solicitud de contraseña al acceder de forma remota:
+    ```
+    switch(config-line)# login
+    ```
+
+## Encriptación de contraseñas
+
+- Encriptar las contraseñas:
+    ```
+    switch(config)# service password-encryption
+    ```
+
+## Guardar configuración y reiniciar
+
+- Guardar la configuración actual en la memoria no volátil:
+    ```
+    switch# copy running-config startup-config
+    ```
+
+- Reiniciar el dispositivo:
+    ```
+    switch# reload
+    ```
+
+## Mensajes de bienvenida
+
+- Configurar un mensaje de bienvenida:
+    ```
+    switch(config)# banner motd #Acceso autorizado únicamente. Los infractores se procesarán en la medida en que lo permita la ley.#
+    ```
+
+## Formateo (¡Usar con cuidado!)
+
+- Formatear la configuración de inicio (elimina toda la configuración):
+    ```
+    switch# erase startup-config
+    ```
+
+- Eliminar el archivo que contiene las VLAN:
+    ```
+    switch# delete vlan.dat
+    ```
+
+## Configuración de IP
+
+### En un switch
+
+- Configurar la dirección IP de una interfaz VLAN:
+    ```
+    Switch(config)#int vlan vlan-number
+    Switch(config-if)#ip address ip-address subnet-mask
+    Switch(config-if)#no shutdown
+    ```
+
+- Ver estado de las VLAN:
+    ```
+    Router#show vlan brief
+    ```
+
+### En un router
+
+- Configurar la dirección IP de una interfaz:
+    ```
+    Router(config)#interface interface-type/number
+    Router(config-if)#ip address direccion mascara-de-subred
+    Router(config-if)#no shutdown
+    ```
+
+- Ponerle descripción a una interfaz:
+    ```
+    Router(config-if)#description Texto cualquier
+    ```
+
+- Ruta de salida del router:
+    ```
+    Router(config)#ip route 0.0.0.0 0.0.0.0 ip-router 
+    ```
+
+- Ver estado de las interfaces:
+    ```
+    Router#show interface
+    ```
+
+- Ver estado de la interfaz y las direcciones IP asignadas a ellas:
+    ```
+    Router#show ip interface brief
+    ```
+
+- Ver tabla de enrutamiento:
+    ```
+    Router#show ip route
+    ```
+
+### Configurar router DHCP
+
+- Excluir una dirección IP:
+    ```
+    Router(config)# ip dhcp excluded-address limite-inferior limite-superior
+    ```
+
+- Configurar un pool de direcciones:
+    ```
+    Router(config)# ip dhcp pool Nombre-red
+    Router(dhcp-config)# network ip-red mascara-red
+    Router(dhcp-config)# default-router direccion-router
+    Router(dhcp-config)# dns-server 8.8.8.8
+    ```
+
+## Acceso SSH
+
+- Verificar compatibilidad con SSH:
+    ```
+    S1# show ip ssh
+    ```
+
+- Asignar nombre de dominio:
+    ```
+    S1(config)# ip domain-name nombre-dominio
+    ```
+
+- Generar claves RSA:
+    ```
+    S1(config)# crypto key generate rsa
+    ```
+
+- Configurar autenticación de usuarios:
+    ```
+    S1(config)# username usuario secret contraseña
+    ```
+
+- Configurar las líneas vty:
+    ```
+    S1(config)# line vty 0 15
+    S1(config-line)# transport input ssh
+    S1(config-line)# login local
+    ```
+
+- Eliminar una contraseña:
+    ```
+    S1(config-line)#no password contraseña
+    ```
+
+- Habilitar SSH versión 2:
+    ```
+    S1(config)# ip ssh version 2
+    ```
+
+## VLAN
+
+- Crear una VLAN:
+    ```
+    S1(config)# vlan 99
+    S1(config-vlan)# name nombre-vlan
+    S1(config-vlan)# end
+    ```
+
+- Asignar un puerto específico a VLAN 99:
+    ```
+    S1(config)# interface fa0/6
+    S1(config-if)# switchport mode access
+    S1(config-if)# switchport access vlan 99
+    S1(config-if)# end
+    ```
+
+- Ver en qué VLAN está configurado un puerto:
+    ```
+    S1# show interfaces fa0/18 switchport
+    ```
+
+- Quitar un puerto de una VLAN (será asociado a la VLAN por defecto):
+    ```
+    S1(config)# interface fa0/18
+    S1(config-if)# no switchport access vlan
+    S1(config-if)# end
+    ```
+
+- Eliminar una VLAN:
+    ```
+    S1# no vlan vlan-id
+    ```
+
+- Asignar varios puertos a VLAN 99:
+    ```
+    S1(config)#interface range gig1/0/1-24
+    S1(config-if-range)#switchport access vlan 99
+    ```
+
+- Ver todas las VLAN configuradas:
+    ```
+    S1# show vlan
+    ```
+
+- Configurar una VLAN de voz y datos:
+    - Creación de las VLAN:
+    ```
+    S3(config)# vlan 20
+    S3(config-vlan)# name student
+    S3(config-vlan)# vlan 150
+    S3(config-vlan)# name VOICE
+    S3(config-vlan)# exit
+    ```
+    - Asignación del puerto 18 a la VLAN:
+    ```
+    S3(config)# interface fa0/18
+    S3(config-if)# switchport mode access
+    S3(config-if)# switchport access vlan 20
+    S3(config-if)# mls qos trust cos
+    S3(config-if)# switchport voice vlan 150
+    S3(config-if)# end
+    ```
+
+- Configurar un enlace troncal:
+    ```
+    S1(config)#int g0/1
+    S1(config-if)#switchport mode trunk
+    S1(config-if)#switchport trunk native vlan 99
+    ```
+
+- Configurar un enlace troncal dinámico:
+    ```
+    S1(config)# interface g0/1
+    S1(config-if)# switchport mode dynamic desirable
+    ```
+
+- Desactivar negociación DTP:
+    ```
+    S1(config-if)# switchport nonegotiate
+    ```
+
+- Configurar una subinterfaz:
+    ```
+    R1(config)# interface G0/0/1.10
+    R1(config-subif)# description Default Gateway for VLAN 10
+    R1(config-subif)# encapsulation dot1Q 10
+    R1(config-subif)# ip add 192.168.10.1 255.255.255.0
+    R1(config-subif)# exit
+    R1(config)# interface G0/0/1
+    R1(config-if)# no shut
+    R1(config-if)# end
+    ```
+### Configuración de EtherChannel:
+
+    ```
+    S1(config)# interface range FastEthernet 0/1 - 2
+    S1(config-if-range)# channel-group 1 mode active
+    S1(config-if-range)# exit
+    ```
+    
+    - `interface range FastEthernet 0/1 - 2`: Este comando te permite acceder a un rango de interfaces FastEthernet desde la 1 hasta la 2.
+      
+    - `channel-group 1 mode active`: Crea un grupo de canales (EtherChannel) y configura el modo de actividad. El modo "activo" significa que el switch intentará formar un EtherChannel con otro dispositivo en el otro extremo.
+    
+    ```
+    S1(config)# interface port-channel 1
+    S1(config-if)# switchport mode trunk
+    S1(config-if)# switchport trunk allowed vlan 1,2,20
+    ```
+    
+    - `interface port-channel 1`: Accede a la interfaz de EtherChannel con el número 1.
+      
+    - `switchport mode trunk`: Configura la interfaz EtherChannel en modo troncal para permitir el paso de múltiples VLANs.
+      
+    - `switchport trunk allowed vlan 1,2,20`: Especifica las VLANs permitidas para pasar a través del enlace troncal.
+    
+    ### Ver información sobre EtherChannel:
+    
+    ```
+    S1# show interfaces port-channel 1
+    ```
+    
+    - Muestra información detallada sobre la interfaz EtherChannel con el número 1.
+    
+    ```
+    S1# show etherchannel summary
+    ```
+    
+    - Proporciona un resumen de todos los canales EtherChannel configurados en el switch.
+    
+    ```
+    S1# show etherchannel port-channel
+    ```
+    
+    - Muestra información detallada sobre el estado y la configuración del canal EtherChannel.
+    
+    ```
+    S1# show interfaces f0/1 etherchannel
+    ```
+    
+    - Muestra información específica sobre el estado del canal EtherChannel para la interfaz FastEthernet 0/1.
