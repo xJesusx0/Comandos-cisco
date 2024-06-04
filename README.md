@@ -27,9 +27,9 @@
     ```
 
 ## Habilitar el routing en un switch de capa 3
-    ```
+    
     D1# ip routing
-    ```
+    
 ## Deshabilitar busqueda dns
     ```
     R1(config)# no ip domain-lookup
