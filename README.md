@@ -401,4 +401,14 @@
     R1(config-if)# no shut
     R1(config-if)# end
     ```
+# EtherChannel
+- Configurar unas interfaces como etherchannel
+  ```
+  S1(config)# interface range FastEthernet 0/1 - 2
+  S1(config-if-range)# channel-group 1 mode active
+  S1(config-if-range)# exit
+  S1(config)# interface port-channel 1
+  S1(config-if)# switchport mode trunk
+  S1(config-if)# switchport trunk allowed vlan 1,2,20
+  ```
 
