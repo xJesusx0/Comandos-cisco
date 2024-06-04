@@ -401,14 +401,54 @@
     R1(config-if)# no shut
     R1(config-if)# end
     ```
-# EtherChannel
-- Configurar unas interfaces como etherchannel
-  ```
-  S1(config)# interface range FastEthernet 0/1 - 2
-  S1(config-if-range)# channel-group 1 mode active
-  S1(config-if-range)# exit
-  S1(config)# interface port-channel 1
-  S1(config-if)# switchport mode trunk
-  S1(config-if)# switchport trunk allowed vlan 1,2,20
-  ```
+Claro, puedo ayudarte a mejorar la documentación sobre EtherChannel en dispositivos Cisco. Aquí tienes una explicación más detallada de cada uno de los comandos que proporcionaste:
 
+### Configuración de EtherChannel:
+
+    ```
+    S1(config)# interface range FastEthernet 0/1 - 2
+    S1(config-if-range)# channel-group 1 mode active
+    S1(config-if-range)# exit
+    ```
+    
+    - `interface range FastEthernet 0/1 - 2`: Este comando te permite acceder a un rango de interfaces FastEthernet desde la 1 hasta la 2.
+      
+    - `channel-group 1 mode active`: Crea un grupo de canales (EtherChannel) y configura el modo de actividad. El modo "activo" significa que el switch intentará formar un EtherChannel con otro dispositivo en el otro extremo.
+    
+    ```
+    S1(config)# interface port-channel 1
+    S1(config-if)# switchport mode trunk
+    S1(config-if)# switchport trunk allowed vlan 1,2,20
+    ```
+    
+    - `interface port-channel 1`: Accede a la interfaz de EtherChannel con el número 1.
+      
+    - `switchport mode trunk`: Configura la interfaz EtherChannel en modo troncal para permitir el paso de múltiples VLANs.
+      
+    - `switchport trunk allowed vlan 1,2,20`: Especifica las VLANs permitidas para pasar a través del enlace troncal.
+    
+    ### Ver información sobre EtherChannel:
+    
+    ```bash
+    S1# show interfaces port-channel 1
+    ```
+    
+    - `show interfaces port-channel 1`: Muestra información detallada sobre la interfaz EtherChannel con el número 1.
+    
+    ```bash
+    S1# show etherchannel summary
+    ```
+    
+    - `show etherchannel summary`: Proporciona un resumen de todos los canales EtherChannel configurados en el switch.
+    
+    ```bash
+    S1# show etherchannel port-channel
+    ```
+    
+    - `show etherchannel port-channel`: Muestra información detallada sobre el estado y la configuración del canal EtherChannel.
+    
+    ```bash
+    S1# show interfaces f0/1 etherchannel
+    ```
+    
+    - `show interfaces f0/1 etherchannel`: Muestra información específica sobre el estado del canal EtherChannel para la interfaz FastEthernet 0/1.
