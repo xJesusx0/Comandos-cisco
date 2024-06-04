@@ -401,8 +401,6 @@
     R1(config-if)# no shut
     R1(config-if)# end
     ```
-Claro, puedo ayudarte a mejorar la documentación sobre EtherChannel en dispositivos Cisco. Aquí tienes una explicación más detallada de cada uno de los comandos que proporcionaste:
-
 ### Configuración de EtherChannel:
 
     ```
@@ -429,25 +427,25 @@ Claro, puedo ayudarte a mejorar la documentación sobre EtherChannel en disposit
     
     ### Ver información sobre EtherChannel:
     
-    ```bash
+    ```
     S1# show interfaces port-channel 1
     ```
     
     - `show interfaces port-channel 1`: Muestra información detallada sobre la interfaz EtherChannel con el número 1.
     
-    ```bash
+    ```
     S1# show etherchannel summary
     ```
     
     - `show etherchannel summary`: Proporciona un resumen de todos los canales EtherChannel configurados en el switch.
     
-    ```bash
+    ```
     S1# show etherchannel port-channel
     ```
     
     - `show etherchannel port-channel`: Muestra información detallada sobre el estado y la configuración del canal EtherChannel.
     
-    ```bash
+    ```
     S1# show interfaces f0/1 etherchannel
     ```
     
