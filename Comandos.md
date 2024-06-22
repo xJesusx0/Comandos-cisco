@@ -67,7 +67,8 @@
 
 #### En un router
 - Configurar la dirección IP de una interfaz:
-  ```
+  ```python
+  from x import *
   Router(config)#interface interface-type/number
   Router(config-if)#ip address direccion mascara-de-subred
   Router(config-if)#no shutdown
