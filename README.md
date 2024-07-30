@@ -409,9 +409,9 @@
     S1(config-if-range)# exit
     ```
     
-    - `interface range FastEthernet 0/1 - 2`: Este comando te permite acceder a un rango de interfaces FastEthernet desde la 1 hasta la 2.
+- `interface range FastEthernet 0/1 - 2`: Este comando te permite acceder a un rango de interfaces FastEthernet desde la 1 hasta la 2.
       
-    - `channel-group 1 mode active`: Crea un grupo de canales (EtherChannel) y configura el modo de actividad. El modo "activo" significa que el switch intentará formar un EtherChannel con otro dispositivo en el otro extremo.
+- `channel-group 1 mode active`: Crea un grupo de canales (EtherChannel) y configura el modo de actividad. El modo "activo" significa que el switch intentará formar un EtherChannel con otro dispositivo en el otro extremo.
     
     ```
     S1(config)# interface port-channel 1
@@ -419,34 +419,49 @@
     S1(config-if)# switchport trunk allowed vlan 1,2,20
     ```
     
-    - `interface port-channel 1`: Accede a la interfaz de EtherChannel con el número 1.
+- `interface port-channel 1`: Accede a la interfaz de EtherChannel con el número 1.
       
-    - `switchport mode trunk`: Configura la interfaz EtherChannel en modo troncal para permitir el paso de múltiples VLANs.
+- `switchport mode trunk`: Configura la interfaz EtherChannel en modo troncal para permitir el paso de múltiples VLANs.
       
-    - `switchport trunk allowed vlan 1,2,20`: Especifica las VLANs permitidas para pasar a través del enlace troncal.
+- `switchport trunk allowed vlan 1,2,20`: Especifica las VLANs permitidas para pasar a través del enlace troncal.
     
-    ### Ver información sobre EtherChannel:
+### Ver información sobre EtherChannel:
     
     ```
     S1# show interfaces port-channel 1
     ```
     
-    - Muestra información detallada sobre la interfaz EtherChannel con el número 1.
+- Muestra información detallada sobre la interfaz EtherChannel con el número 1.
     
     ```
     S1# show etherchannel summary
     ```
     
-    - Proporciona un resumen de todos los canales EtherChannel configurados en el switch.
+- Proporciona un resumen de todos los canales EtherChannel configurados en el switch.
     
     ```
     S1# show etherchannel port-channel
     ```
     
-    - Muestra información detallada sobre el estado y la configuración del canal EtherChannel.
+- Muestra información detallada sobre el estado y la configuración del canal EtherChannel.
     
     ```
     S1# show interfaces f0/1 etherchannel
     ```
     
-    - Muestra información específica sobre el estado del canal EtherChannel para la interfaz FastEthernet 0/1.
+- Muestra información específica sobre el estado del canal EtherChannel para la interfaz FastEthernet 0/1.
+
+## Enrutamiento ip
+- Ver tabla de enrutamiento
+  ```
+    R1# show ip route | begin Gateway
+  
+  ```
+- ipv4
+     ```
+    Router(config)# ip route network-address subnet-mask { ip-address | exit-intf [ip-address]} [distance]
+    ```
+- ipv6
+  ```
+    Router(config)# ipv6 route ipv6-prefix/prefix-length {ipv6-address | exit-intf [ipv6-address]} [distance]
+  ```
