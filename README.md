@@ -466,9 +466,120 @@
     Router(config)# ipv6 route ipv6-prefix/prefix-length {ipv6-address | exit-intf [ipv6-address]} [distance]
   ```
 ### Recuperar contraseña
-  ```
-    Router(config)# confreg 0x2142
-    Router(config)# reload
-    Router(config)# wr
-  ```
+# Procedimiento para reiniciar (recuperar) la contraseña de un router Cisco
 
+### 1. Conéctate al router físicamente (consola)
+
+Usa un cable consola para conectar tu computadora al router.
+
+---
+
+### 2. Reinicia el router
+
+Apaga y enciende el router o usa el comando:
+
+```bash
+reload
+```
+
+---
+
+### 3. Interrumpir el proceso de arranque
+
+Durante el arranque, cuando aparece el mensaje:
+
+```
+Press RETURN to get started!
+```
+
+Presiona **Ctrl + Break** (o Ctrl + Pause) para entrar en modo ROMMON (modo de recuperación).
+
+---
+
+### 4. Cambiar el registro de configuración
+
+En el prompt del ROMMON, escribe:
+
+```bash
+confreg 0x2142
+```
+
+Esto le indica al router que **ignore la configuración guardada** (donde está la contraseña) al arrancar.
+
+---
+
+### 5. Reiniciar el router
+
+Escribe:
+
+```bash
+reset
+```
+
+o simplemente apaga y enciende el router.
+
+---
+
+### 6. Entrar en modo EXEC privilegiado sin contraseña
+
+El router arrancará sin cargar la configuración guardada, por lo que tendrás acceso sin pedir contraseña.
+
+---
+
+### 7. Cargar la configuración guardada manualmente
+
+Desde el modo EXEC privilegiado, carga la configuración guardada con:
+
+```bash
+copy startup-config running-config
+```
+
+---
+
+### 8. Cambiar la contraseña
+
+Ahora entra en modo configuración global:
+
+```bash
+configure terminal
+```
+
+Cambia la contraseña del enable secret (o la que necesites):
+
+```bash
+enable secret NUEVA_CONTRASEÑA
+```
+
+Si quieres cambiar la contraseña de consola o vty, hazlo en sus líneas correspondientes.
+
+---
+
+### 9. Restaurar el registro de configuración
+
+Vuelve a poner el registro normal para que el router cargue la configuración al arrancar:
+
+```bash
+config-register 0x2102
+```
+
+---
+
+### 10. Guardar configuración y reiniciar
+
+Guarda la configuración actual:
+
+```bash
+write memory
+```
+
+o
+
+```bash
+copy running-config startup-config
+```
+
+Finalmente, reinicia el router para que todo quede activo:
+
+```bash
+reload
+```
