@@ -465,3 +465,9 @@
   ```
     Router(config)# ipv6 route ipv6-prefix/prefix-length {ipv6-address | exit-intf [ipv6-address]} [distance]
   ```
+### Recuperar contraseña
+  ```
+    Router(config)# confreg 0x2142
+    Router(config)# wr
+  ```
+
