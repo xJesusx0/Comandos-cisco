@@ -468,6 +468,7 @@
 ### Recuperar contraseña
   ```
     Router(config)# confreg 0x2142
+    Router(config)# reload
     Router(config)# wr
   ```
 
